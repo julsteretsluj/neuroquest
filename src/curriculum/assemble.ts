@@ -1,6 +1,6 @@
 import { makeLesson, makeQuestions } from "./build";
 import type { BeatSeed, LessonSeed, UnitSeed } from "./seed";
-import { FORMATS, type Course, type FormatId, type QuestionDraft, type Quiz } from "./types";
+import { FORMATS, type ArticleBlock, type Course, type FormatId, type QuestionDraft, type Quiz } from "./types";
 
 function withSlot(correct: string, wrongs: [string, string, string], slot: number): { choices: string[]; correct: number } {
   const choices = [...wrongs];
@@ -56,17 +56,60 @@ function sceneSentence(scene: string): string {
   return close(trimmed.charAt(0).toUpperCase() + trimmed.slice(1));
 }
 
-function frameBlocks(beat: BeatSeed): { heading?: string; body: string }[] {
-  return [
-    { heading: beat.heading, body: tidy(beat.research) },
+function plainHeading(heading: string): string {
+  return heading.replace(/^[^\p{L}\p{N}"“]+/u, "").trim();
+}
+
+function splitLead(text: string): { lead: string; rest: string } {
+  const trimmed = tidy(text);
+  const match = trimmed.match(/^(.*?[.!?])\s+(?=[A-Z“"])([\s\S]+)$/);
+  if (!match) return { lead: trimmed, rest: "" };
+  return { lead: match[1], rest: match[2].trim() };
+}
+
+function lessonArticle(lesson: LessonSeed): ArticleBlock[] {
+  const blocks: ArticleBlock[] = [
+    { body: lesson.opener },
     {
-      body: `${sceneSentence(beat.scene)} The obstacle is ${tidy(beat.barrier)}. The goal is ${tidy(beat.goal)}. Do this: ${close(beat.means)}`,
+      heading: "Key terms",
+      terms: lesson.beats.map((beat) => ({
+        term: plainHeading(beat.heading),
+        definition: splitLead(beat.research).lead,
+      })),
     },
-    {
-      body: `Replace ${spoken(beat.deficit)} with this: ${close(beat.reframe)} A learner says ${spoken(beat.line)} You can answer: ${spoken(beat.reply)}`,
-    },
-    { body: `The questions use this wording: ${close(beat.quizCorrect)}` },
   ];
+
+  lesson.beats.forEach((beat) => {
+    const rest = splitLead(beat.research).rest;
+    blocks.push({ heading: beat.heading, ...(rest ? { body: rest } : {}) });
+    blocks.push({
+      heading: "In the classroom",
+      level: 3,
+      bullets: [
+        sceneSentence(beat.scene),
+        `Obstacle: ${close(beat.barrier)}`,
+        `Goal: ${close(beat.goal)}`,
+        `Do this: ${close(beat.means)}`,
+      ],
+    });
+    blocks.push({
+      heading: "What to say",
+      level: 3,
+      bullets: [
+        `Retire ${spoken(beat.deficit)}`,
+        `Say instead: ${close(beat.reframe)}`,
+        `A learner says ${spoken(beat.line)}`,
+        `You can answer: ${spoken(beat.reply)}`,
+      ],
+    });
+    blocks.push({
+      heading: "Remember",
+      level: 3,
+      body: `The questions use this wording: ${close(beat.quizCorrect)}`,
+    });
+  });
+
+  return blocks;
 }
 
 function draftFor(beat: BeatSeed, format: FormatId, slot: number, lessonTitle: string): Omit<QuestionDraft, "sourceLessonId" | "sourceUnitId"> {
@@ -153,7 +196,7 @@ export function assemble(seeds: UnitSeed[]): Course {
         lesson.emoji,
         lesson.concept,
         lesson.articleTitle,
-        [{ body: lesson.opener }, ...lesson.beats.flatMap((beat) => frameBlocks(beat))],
+        lessonArticle(lesson),
         lessonDrafts(lesson).map((draft) => ({ ...draft, sourceLessonId: id, sourceUnitId: seed.id })),
       );
     });

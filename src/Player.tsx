@@ -191,8 +191,25 @@ export function Player({
           <div className="blocks">
             {activity.article.blocks.map((block, index) => (
               <section key={`${block.heading ?? "p"}-${index}`}>
-                {block.heading ? <h2>{block.heading}</h2> : null}
-                <p>{block.body}</p>
+                {block.heading ? (block.level === 3 ? <h3>{block.heading}</h3> : <h2>{block.heading}</h2>) : null}
+                {block.body ? <p>{block.body}</p> : null}
+                {block.terms ? (
+                  <dl>
+                    {block.terms.map((item) => (
+                      <div key={item.term}>
+                        <dt>{item.term}</dt>
+                        <dd>{item.definition}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                ) : null}
+                {block.bullets ? (
+                  <ul>
+                    {block.bullets.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : null}
               </section>
             ))}
           </div>

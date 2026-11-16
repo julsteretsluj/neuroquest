@@ -21,7 +21,10 @@ export interface Question {
 
 export interface ArticleBlock {
   heading?: string;
-  body: string;
+  level?: 2 | 3;
+  body?: string;
+  terms?: { term: string; definition: string }[];
+  bullets?: string[];
 }
 
 export interface Lesson {

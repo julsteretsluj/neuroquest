@@ -1,10 +1,19 @@
-import { FORMATS, type Lesson, type Question, type QuestionDraft } from "./types";
+import { FORMATS, type ArticleBlock, type Lesson, type Question, type QuestionDraft } from "./types";
 
 const SCENE =
   "The classroom scenes in this lesson are composites, built for practice. They are not real students, and they are not clients or family members of anyone named in this reading.";
 
-export function articleText(blocks: { heading?: string; body: string }[]): string {
-  return blocks.map((block) => `${block.heading ?? ""} ${block.body}`).join("\n");
+export function articleText(blocks: ArticleBlock[]): string {
+  return blocks
+    .map((block) =>
+      [
+        block.heading ?? "",
+        block.body ?? "",
+        ...(block.terms ?? []).flatMap((item) => [item.term, item.definition]),
+        ...(block.bullets ?? []),
+      ].join(" "),
+    )
+    .join("\n");
 }
 
 export function wordCount(text: string): number {
@@ -36,7 +45,7 @@ export function makeLesson(
   emoji: string,
   concept: string,
   articleTitle: string,
-  blocks: { heading?: string; body: string }[],
+  blocks: ArticleBlock[],
   drafts: QuestionDraft[],
 ): Lesson {
   return {

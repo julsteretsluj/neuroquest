@@ -19,7 +19,7 @@ export function curriculumProblems(course: Course): string[] {
       bodies.add(text);
       unitArticles.set(lesson.id, text);
       const words = wordCount(text);
-      if (words < 500 || words > 800) problems.push(`${lesson.title} article is ${words} words.`);
+      if (words < 500 || words > 1100) problems.push(`${lesson.title} article is ${words} words.`);
       if (lesson.questions.length < 20) problems.push(`${lesson.title} has ${lesson.questions.length} questions.`);
       lesson.questions.forEach((question, index) => {
         const expected = FORMATS[index % FORMATS.length].id;

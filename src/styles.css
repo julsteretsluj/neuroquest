@@ -230,7 +230,28 @@ button { cursor: pointer; }
   letter-spacing: -0.02em;
 }
 
+.blocks h3 {
+  margin: 0.15rem 0 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
 .blocks p, .prompt, .context, .feedback p { margin: 0; }
+
+.blocks ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.blocks li + li { margin-top: 0.35rem; }
+
+.blocks dt {
+  margin-top: 0.55rem;
+  font-weight: 650;
+}
+
+.blocks dd { margin: 0.12rem 0 0; }
 
 .sentinel { height: 12px; }
 
