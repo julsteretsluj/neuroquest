@@ -67,13 +67,13 @@ export function Player({
   if (!attempt && finished) {
     return (
       <article className="player">
-        <button className="ghost back" type="button" onClick={onExit}>← Back to the path</button>
+        <button className="text-button back" type="button" onClick={onExit}>Back</button>
         <div className="sheet done">
           <p className="kicker">{activity.place}</p>
           <h1>{activity.emoji} {activity.kind === "lesson" ? "Lesson complete" : "Quiz complete"}</h1>
           <p className="lede">The goal stays the same. This one is on the path now, and the next step can open.</p>
           <div className="hero-actions">
-            <button className="primary" type="button" onClick={onExit}>Return to the path</button>
+            <button className="primary" type="button" onClick={onExit}>Back to units</button>
             <button
               className="ghost"
               type="button"
@@ -182,7 +182,7 @@ export function Player({
 
   return (
     <article className="player">
-      <button className="ghost back" type="button" onClick={onExit}>← Back to the path</button>
+      <button className="text-button back" type="button" onClick={onExit}>Back</button>
       <p className="kicker">{activity.place}</p>
       {attempt.status === "article" && activity.article ? (
         <div className="sheet">
@@ -199,10 +199,9 @@ export function Player({
           <div ref={endRef} className="sentinel" />
           <div className="hero-actions" style={{ marginTop: "1rem" }}>
             <button className="primary" type="button" disabled={!reachedEnd} onClick={confirmRead}>
-              I’ve read this — start the {activity.questions.length} questions
+              {reachedEnd ? "Start the questions" : "Keep reading to continue"}
             </button>
           </div>
-          {!reachedEnd ? <p className="quiet">Scroll to the end of the article. The questions stay locked until then.</p> : null}
         </div>
       ) : null}
 
@@ -211,11 +210,10 @@ export function Player({
           <p className="kicker">
             {formatMeta(question.format).emoji} {formatMeta(question.format).label} · {attempt.index + 1} of {attempt.order.length}
           </p>
-          <h1>{activity.emoji} {activity.title}</h1>
+          <h1 className="prompt-title">{question.prompt}</h1>
           {question.context ? (
             <blockquote className={question.quote ? "context quote" : "context"}>{question.context}</blockquote>
           ) : null}
-          <p className="prompt" style={{ marginTop: "0.9rem" }}>{question.prompt}</p>
           <div className="choices">
             {question.choices.map((choice, index) => {
               const missed = (attempt.eliminated[question.id] ?? []).includes(index);
@@ -242,38 +240,29 @@ export function Player({
           {attempt.resolved.includes(question.id) && attempt.status === "question" ? (
             <div className="hero-actions" style={{ marginTop: "0.7rem" }}>
               <button className="primary" type="button" onClick={next}>
-                {attempt.index >= attempt.order.length - 1 ? "Finish and mark the path" : "Next question"}
+                {attempt.index >= attempt.order.length - 1 ? "Finish" : "Next question"}
               </button>
             </div>
           ) : null}
           {attempt.status === "failed" ? (
             <div className="feedback miss">
-              <h2>Hearts are at zero</h2>
-              <p>
-                This attempt stops. The goal has not changed.
-                {activity.article
-                  ? " You can spend 40 XP to stay on this question, or read the article again and retry in a new order."
-                  : " You can spend 40 XP to stay on this question, or retry in a new order."}
-              </p>
+              <h2>No hearts left</h2>
+              <p>Stay on this question for 40 XP, or retry in a new order.</p>
               <div className="end-actions" style={{ marginTop: "0.7rem" }}>
                 <button className="primary" type="button" disabled={Boolean(reason)} onClick={buyHeart}>
-                  Buy a heart and stay — 40 XP
+                  Stay — 40 XP
                 </button>
-                <button className="ghost" type="button" onClick={retry}>Retry in a new order</button>
+                <button className="ghost" type="button" onClick={retry}>Retry</button>
               </div>
               {reason ? <p className="buy-note">{reason}</p> : null}
             </div>
-          ) : (
+          ) : attempt.hearts <= 1 ? (
             <div className="hero-actions" style={{ marginTop: "0.9rem" }}>
               <button className="ghost" type="button" disabled={Boolean(reason)} onClick={buyHeart}>
                 Buy a heart — 40 XP
               </button>
-              {reason ? <p className="quiet buy-note">{reason}</p> : null}
             </div>
-          )}
-          <div className="pips" aria-hidden="true">
-            {attempt.order.map((id, index) => <i key={id} className={index <= attempt.index ? "on" : ""} />)}
-          </div>
+          ) : null}
         </div>
       ) : null}
     </article>

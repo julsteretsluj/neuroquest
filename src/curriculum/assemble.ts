@@ -9,6 +9,36 @@ function withSlot(correct: string, wrongs: [string, string, string], slot: numbe
   return { choices, correct: index };
 }
 
+function tidy(text: string): string {
+  return text.trim().replace(/\s+/g, " ");
+}
+
+function asSentence(text: string): string {
+  const trimmed = tidy(text);
+  const capped = trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+  if (/[.!?]["”']?$/.test(capped)) return capped;
+  return `${capped}.`;
+}
+
+function asChoice(text: string): string {
+  return asSentence(text);
+}
+
+function asEnding(text: string): string {
+  const trimmed = tidy(text).replace(/[.?!]+["”']?$/, "");
+  return `${trimmed}.`;
+}
+
+function quizAsk(prompt: string): string {
+  const trimmed = tidy(prompt);
+  const asksDirectly = /^(who|what|when|where|why|how|which)\b/i.test(trimmed);
+  if (asksDirectly || trimmed.endsWith("?")) {
+    const question = trimmed.replace(/[?\s]+$/, "");
+    return `🧩 ${question}?`;
+  }
+  return `🧩 Finish this sentence: ${trimmed}`;
+}
+
 function frame(beat: BeatSeed, index: number): string {
   const shared = `Composite: ${beat.scene} Barrier: ${beat.barrier}. Goal: ${beat.goal}. Means: ${beat.means}. Retire “${beat.deficit}.” Instead: ${beat.reframe} If you hear “${beat.line},” say “${beat.reply}” Check: ${beat.quizCorrect}`;
   if (index % 4 === 1) {
@@ -28,9 +58,9 @@ function draftFor(beat: BeatSeed, format: FormatId, slot: number, lessonTitle: s
     const packed = withSlot(beat.barrier, beat.barrierWrongs, slot);
     return {
       anchor: beat.barrier,
-      prompt: `🔍 What is the hidden barrier in this scene from “${lessonTitle}”?`,
-      context: beat.scene,
-      choices: packed.choices,
+      prompt: "🔍 Read the scene below. What is getting in the way of the learning?",
+      context: asSentence(beat.scene),
+      choices: packed.choices.map((choice) => `The obstacle is ${asEnding(choice)}`),
       correct: packed.correct,
       why: beat.why,
       hint: beat.hint,
@@ -40,10 +70,10 @@ function draftFor(beat: BeatSeed, format: FormatId, slot: number, lessonTitle: s
     const packed = withSlot(beat.reframe, beat.reframeWrongs, slot);
     return {
       anchor: beat.reframe,
-      prompt: `🔄 Which translation fits the deficit line in “${lessonTitle}”?`,
-      context: beat.deficit,
+      prompt: `🔄 A teacher says the line below during “${lessonTitle}.” Which version says what is really happening, without blaming the learner?`,
+      context: asSentence(beat.deficit),
       quote: true,
-      choices: packed.choices,
+      choices: packed.choices.map(asChoice),
       correct: packed.correct,
       why: beat.why,
       hint: beat.hint,
@@ -53,9 +83,9 @@ function draftFor(beat: BeatSeed, format: FormatId, slot: number, lessonTitle: s
     const packed = withSlot(beat.means, beat.meansWrongs, slot);
     return {
       anchor: beat.means,
-      prompt: `🛠️ Which option keeps the goal from “${lessonTitle}” and removes the incidental barrier?`,
-      context: `Goal: ${beat.goal}`,
-      choices: packed.choices,
+      prompt: "🛠️ The learning goal is below. Which change keeps that goal and removes the obstacle?",
+      context: `The goal is ${asChoice(beat.goal).charAt(0).toLowerCase()}${asChoice(beat.goal).slice(1)}`,
+      choices: packed.choices.map(asChoice),
       correct: packed.correct,
       why: beat.why,
       hint: beat.hint,
@@ -63,10 +93,12 @@ function draftFor(beat: BeatSeed, format: FormatId, slot: number, lessonTitle: s
   }
   if (format === "quiz") {
     const packed = withSlot(beat.quizCorrect, beat.quizWrongs, slot);
+    const stem = tidy(beat.quizPrompt);
+    const asksDirectly = /^(who|what|when|where|why|how|which)\b/i.test(stem) || stem.endsWith("?");
     return {
       anchor: beat.quizCorrect,
-      prompt: `🧩 ${beat.quizPrompt}`,
-      choices: packed.choices,
+      prompt: quizAsk(beat.quizPrompt),
+      choices: packed.choices.map(asksDirectly ? asChoice : asEnding),
       correct: packed.correct,
       why: beat.why,
       hint: beat.hint,
@@ -75,10 +107,10 @@ function draftFor(beat: BeatSeed, format: FormatId, slot: number, lessonTitle: s
   const packed = withSlot(beat.reply, beat.replyWrongs, slot);
   return {
     anchor: beat.reply,
-    prompt: `🎭 Which reply is psychologically safer in “${lessonTitle}”?`,
-    context: beat.line,
+    prompt: "🎭 A learner says the line below. Which reply should you give?",
+    context: asSentence(beat.line),
     quote: true,
-    choices: packed.choices,
+    choices: packed.choices.map(asChoice),
     correct: packed.correct,
     why: beat.why,
     hint: beat.hint,
