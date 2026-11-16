@@ -27,6 +27,8 @@ export interface LessonSeed {
   articleTitle: string;
   opener: string;
   beats: [BeatSeed, BeatSeed, BeatSeed, BeatSeed];
+  /** When set, this article is used instead of the generated one. */
+  article?: import("./types").ArticleBlock[];
 }
 
 export interface UnitSeed {

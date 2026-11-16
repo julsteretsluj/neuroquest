@@ -196,7 +196,7 @@ export function assemble(seeds: UnitSeed[]): Course {
         lesson.emoji,
         lesson.concept,
         lesson.articleTitle,
-        lessonArticle(lesson),
+        lesson.article ?? lessonArticle(lesson),
         lessonDrafts(lesson).map((draft) => ({ ...draft, sourceLessonId: id, sourceUnitId: seed.id })),
       );
     });

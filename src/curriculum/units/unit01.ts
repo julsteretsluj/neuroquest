@@ -10,9 +10,9 @@ const lessons: UnitSeed["lessons"] = [
     emoji: "🌿",
     articleTitle: "Neurodiversity is not something a student has",
     concept:
-      "Neurodiversity names variation across human minds. It is not a label you stick on one child, and it is not a program. This lesson keeps that distinction sharp before any classroom move.",
+      "Neurodiversity is a fact about human minds. It is not a trait one student has, and it is not a program you can print on a slide.",
     opener:
-      "Nick Walker published “Neurodiversity: Some Basic Terms & Definitions” in 2014 and later kept the essay on Neuroqueer. The definitions below follow that essay, in paraphrase, because the wording is his and the course should not paste it. Use the ideas. Do not treat a slogan as if it were a diagnosis.",
+      "Nick Walker’s 2014 essay “Neurodiversity: Some Basic Terms & Definitions,” later kept on Neuroqueer, separates words that schools often fold into one slogan. This lesson paraphrases that essay. It does not paste his sentences. Use the distinctions. A slogan is not a diagnosis, and it is not a lesson plan.",
     beats: [
       beat({
         heading: "🌿 Variation in the species",
@@ -102,6 +102,131 @@ const lessons: UnitSeed["lessons"] = [
         why: "Walker (2014) treats variation as ordinary. A single imagined student is a design choice, not a neutral default.",
         hint: "The goal can stay. The assumption that one kind of mind is the default is the part to retire.",
       }),
+    ],
+    article: [
+      {
+        body: "Nick Walker’s 2014 essay “Neurodiversity: Some Basic Terms & Definitions,” later kept on Neuroqueer, separates words that schools often fold into one slogan. This lesson paraphrases that essay. It does not paste his sentences. Use the distinctions. A slogan is not a diagnosis, and it is not a lesson plan.",
+      },
+      {
+        heading: "Key terms",
+        terms: [
+          {
+            term: "Neurodiversity",
+            definition:
+              "A biological fact: human minds vary. Walker (2014) describes it as infinite variation in neurocognitive functioning within our species. It is not a perspective, a belief, a political program, or a trait one child has.",
+          },
+          {
+            term: "Neurodiversity paradigm",
+            definition:
+              "A perspective on that fact. Walker (2014) treats it as a perspective on variation, distinct from the fact and from the movement.",
+          },
+          {
+            term: "Neurodiversity Movement",
+            definition:
+              "A social justice effort for civil rights and inclusion. It is not a synonym for the fact, and it is not a classroom design by itself.",
+          },
+          {
+            term: "Neurodiverse",
+            definition:
+              "A word for a group whose members differ in how their minds work. Walker (2014) does not use it for one student.",
+          },
+          {
+            term: "Neurodivergent",
+            definition:
+              "A word for a person who diverges from dominant norms. Walker (2014) credits Kassiane Asasumasu with coining it.",
+          },
+        ],
+      },
+      {
+        heading: "Neurodiversity is a fact about the species",
+        body: "A child does not “have neurodiversity,” any more than a child “has biodiversity.” The fact belongs to the species. In Walker’s 2014 terms, neurodiversity is a fact of variation across human minds, not a personal trait. When a staff member treats that fact as Maya’s condition, the class loses a clear language for variation, and Maya is singled out for a card that does not name what she actually needs.",
+      },
+      {
+        heading: "In the classroom",
+        level: 3,
+        bullets: [
+          "A primary teacher tells a colleague, “Maya has neurodiversity, so she gets a card.”",
+          "The obstacle is treating a species-level fact as a personal trait.",
+          "The goal is a clear class language for variation.",
+          "Do this: say the class is neurodiverse and name the student’s actual access need.",
+        ],
+      },
+      {
+        heading: "What to say",
+        level: 3,
+        bullets: [
+          "Retire “She has neurodiversity.”",
+          "Say instead: Neurodiversity is a fact about human minds, not a trait Maya possesses.",
+          "A learner asks, “Do I have neurodiversity?” You can answer: “People vary. You have a name for how you learn, and we will design for that.”",
+        ],
+      },
+      {
+        heading: "Three words do three different jobs",
+        body: "Staff talk past each other when one word has to mean a fact, a belief, and a change in the lesson. The fact is that minds vary. The paradigm is one way of looking at that fact. The movement is the civil-rights work. None of those is the accommodation. A slide that only names the word is using the word as a slogan while the design stays unchanged, and the timed test stays exactly as it was.",
+      },
+      {
+        heading: "In the classroom",
+        level: 3,
+        bullets: [
+          "A high-school department writes “we follow neurodiversity” on a slide and changes nothing in the timed test.",
+          "The goal is an honest account of what the team actually believes and does.",
+          "Do this: name which claim you mean: the fact, the paradigm, or a change in design.",
+        ],
+      },
+      {
+        heading: "What to say",
+        level: 3,
+        bullets: [
+          "Retire “Saying neurodiversity is the accommodation.”",
+          "Say instead: The word is not the design. Say which belief and which barrier you are changing.",
+          "A colleague asks, “If we say we are a neurodiversity school, are we done?” You can answer: “The word does not finish the work. Tell me which barrier we are removing.”",
+        ],
+      },
+      {
+        heading: "A group can be neurodiverse. One student is not.",
+        body: "Walker (2014) says a group is neurodiverse when its members differ in neurocognitive functioning. A person who diverges from dominant norms is neurodivergent. Calling one autistic student “the neurodiverse one,” and calling everyone else typical, is a group word used to single out one student. The class was already neurodiverse. He did not become the diverse one by being named.",
+      },
+      {
+        heading: "In the classroom",
+        level: 3,
+        bullets: [
+          "A middle-school roster labels one autistic student “the neurodiverse one” and calls everyone else typical.",
+          "The goal is accurate language that does not isolate.",
+          "Do this: describe the class as neurodiverse and the student as autistic or neurodivergent, as they prefer.",
+        ],
+      },
+      {
+        heading: "What to say",
+        level: 3,
+        bullets: [
+          "Retire “He is the neurodiverse student.”",
+          "Say instead: The class is neurodiverse. He is autistic, if that is the word he uses.",
+          "A learner asks, “Why did the slide call only me neurodiverse?” You can answer: “That was the wrong word for one person. This class has more than one kind of mind.”",
+        ],
+      },
+      {
+        heading: "Keep the academic goal",
+        body: "Walker’s distinction does not write the lesson plan. It stops you from treating difference as a private defect you have to deny before teaching can start. A design that only fits an imagined average mind misses real variation even when the academic goal is sound. The seminar can still demand an argument and evidence. What changes is the single path: cold call, dense PDF, and spoken thread all at once.",
+      },
+      {
+        heading: "In the classroom",
+        level: 3,
+        bullets: [
+          "A high-school seminar assumes every student can hold a spoken thread, a dense PDF, and a cold call at once.",
+          "The obstacle is a design that only fits an imagined average mind.",
+          "The goal is a seminar argument with evidence.",
+          "Do this: keep the argument and evidence, and offer a text, a pause, and a written turn.",
+        ],
+      },
+      {
+        heading: "What to say",
+        level: 3,
+        bullets: [
+          "Retire “If they were average they could do this.”",
+          "Say instead: Average was never a student. The argument can stay while the single path goes.",
+          "A learner says, “I can make the argument. I can’t do it cold, out loud, on the first pass.” You can answer: “The argument stays. You can write the first pass and speak the second.”",
+        ],
+      },
     ],
   },
   {
