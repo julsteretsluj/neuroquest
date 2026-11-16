@@ -234,9 +234,9 @@ const lessons: UnitSeed["lessons"] = [
     emoji: "🧭",
     articleTitle: "What the neurodiversity paradigm actually commits you to",
     concept:
-      "Walker’s paradigm is three commitments, not a poster. Variation is natural and valuable, one “normal” mind is a cultural fiction, and the power dynamics look like other struggles over human difference.",
+      "The neurodiversity paradigm is three commitments, not a poster. Test a decision against them: variation is valuable, one normal mind is a fiction, and ordinary rules can still hand out power.",
     opener:
-      "This lesson stays inside Nick Walker’s 2014 account of the neurodiversity paradigm and paraphrases it. The three commitments are the test for a classroom decision. A practice that needs one normal mind, or that treats variation as a flaw to rank, is not this paradigm, whatever the poster says.",
+      "This lesson stays inside Nick Walker’s 2014 account of the neurodiversity paradigm and paraphrases it. A practice that needs one normal mind, or that ranks variation as a flaw, is not this paradigm, whatever the poster says.",
     beats: [
       beat({
         heading: "🧭 Natural and valuable",
@@ -326,6 +326,128 @@ const lessons: UnitSeed["lessons"] = [
         why: "Walker (2014) treats embraced diversity as creative potential, which a firm brief can use rather than fear.",
         hint: "Potential sits beside the standard. It does not delete the standard.",
       }),
+    ],
+    article: [
+      {
+        body: "This lesson stays inside Nick Walker’s 2014 account of the neurodiversity paradigm and paraphrases it. He describes three commitments. Use them as a test. A practice that needs one normal mind, or that ranks variation as a flaw, is not this paradigm, whatever the poster says. The same essay adds a fourth line: diversity that is actually embraced is a source of creative potential. That line keeps the standard. It does not replace it.",
+      },
+      {
+        heading: "Key terms",
+        terms: [
+          {
+            term: "Natural and valuable",
+            definition:
+              "Walker (2014) says neurodiversity is a natural and valuable form of human diversity. Valuable means difference is not a defect, not that support is unnecessary.",
+          },
+          {
+            term: "One normal mind",
+            definition:
+              "One normal, healthy, or right style of mind is a cultural fiction. Walker (2014) compares it to the fiction of one normal ethnicity, gender, or culture.",
+          },
+          {
+            term: "Power",
+            definition:
+              "Neurodiversity brings the same kinds of social dynamics as ethnicity, gender, and culture, including unequal power. Ordinary rules can still decide whose thinking counts.",
+          },
+          {
+            term: "Creative potential",
+            definition:
+              "When diversity is actually embraced, Walker (2014) calls it a source of creative potential. It adds routes to the same work and is not a softer replacement.",
+          },
+        ],
+      },
+      {
+        heading: "Difference is not a defect",
+        body: "Valuable does not mean every lesson is easy, and it does not mean support is optional. It means you stop ranking a mind as less than a supposed normal one. An assembly that praises autistic students only for “overcoming,” and never mentions what they know, is praise that treats difference as a defect to be beaten. The experiment, the explanation, or the model was the work. Bravery was the story the adults preferred.",
+      },
+      {
+        heading: "In the classroom",
+        level: 3,
+        bullets: [
+          "A primary assembly praises “overcoming” autistic students and never mentions what they know.",
+          "The obstacle is praise that treats difference as a defect to be beaten.",
+          "The goal is public recognition of real work.",
+          "Do this: name the work and the access that made it possible, without a rescue story.",
+        ],
+      },
+      {
+        heading: "What to say",
+        level: 3,
+        bullets: [
+          "Retire “They overcame their brain.”",
+          "Say instead: Their mind is not the villain. Name what they made and what access helped.",
+          "A learner says, “I don’t want a bravery award. I want the science fair judged on the experiment.” You can answer: “The experiment is the thing we will judge. Bravery is not the category.”",
+        ],
+      },
+      {
+        heading: "One normal mind is a story the school invented",
+        body: "The second commitment says there is no single healthy style of human mind. Walker compares that story to the fiction of one normal ethnicity, gender, or culture. A rubric can still describe quality. It cannot pretend one nervous system is the human default. Full marks only for steady eye contact is a quality rule that is really a body rule. The partner either got the point or did not.",
+      },
+      {
+        heading: "In the classroom",
+        level: 3,
+        bullets: [
+          "A middle-school rubric gives full marks only for steady eye contact during feedback.",
+          "The obstacle is a quality rule that is really a body rule.",
+          "The goal is useful feedback a partner can follow.",
+          "Do this: grade whether the partner can follow the point, not where the eyes rest.",
+        ],
+      },
+      {
+        heading: "What to say",
+        level: 3,
+        bullets: [
+          "Retire “No eye contact, no communication.”",
+          "Say instead: Communication is the point landing. Eye contact was never the goal.",
+          "A learner says, “I am listening. My eyes are on the notes.” You can answer: “Notes are a fine place for your eyes. I am checking whether the point landed.”",
+        ],
+      },
+      {
+        heading: "Ordinary rules still hand out power",
+        body: "The third commitment says these dynamics are not outside school. A rule can look neutral and still sort whose way of thinking counts. In this paradigm, ordinary rules can still decide whose thinking counts. A weekly prize for the fastest uninterrupted speaker is a rule that quietly ranks one interaction style as intelligence. The case and the answer to a counterpoint are the work. Speed is a style.",
+      },
+      {
+        heading: "In the classroom",
+        level: 3,
+        bullets: [
+          "A high-school debate prize goes to the fastest uninterrupted speaker every week.",
+          "The obstacle is a rule that quietly ranks one interaction style as intelligence.",
+          "The goal is a reasoned case and a real response to a counterpoint.",
+          "Do this: score the case and the response, and allow notes, pauses, and a written cross-exam.",
+        ],
+      },
+      {
+        heading: "What to say",
+        level: 3,
+        bullets: [
+          "Retire “Slow speech is weak thinking.”",
+          "Say instead: Speed is a style. The case and the response are the thinking.",
+          "A learner says, “I had the counterpoint. The prize left before I could say it.” You can answer: “The counterpoint is the work. We will take it in speech or writing before anyone is ranked.”",
+        ],
+      },
+      {
+        heading: "Creative potential keeps the brief",
+        body: "Walker’s line about creative potential is not a consolation prize for students who “cannot do the real work.” Embraced diversity adds routes to the same work and is not a softer replacement. Banning special interests so a prototype will “look serious” is a ban on the very variation that could strengthen the work. The constraints stay. The example can come from a real interest.",
+      },
+      {
+        heading: "In the classroom",
+        level: 3,
+        bullets: [
+          "A design-technology class bans special interests from the brief so the work will look serious.",
+          "The obstacle is a ban on the very variation that could strengthen the work.",
+          "The goal is a prototype that meets the brief’s constraints.",
+          "Do this: keep the constraints and let the example sit inside a real interest.",
+        ],
+      },
+      {
+        heading: "What to say",
+        level: 3,
+        bullets: [
+          "Retire “Interests make the work childish.”",
+          "Say instead: The constraints are the standard. The interest can carry a serious prototype.",
+          "A learner asks, “Can the bridge still be a bridge if I use train loadings as the case?” You can answer: “Yes. The loadings have to be real, and the bridge still has to meet the brief.”",
+        ],
+      },
     ],
   },
   {
