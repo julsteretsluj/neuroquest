@@ -212,7 +212,7 @@ export const unit05: UnitSeed = {
       concept:
         "Tychelle (@childofautism) has written that she does not expect everyone to know every detail of racism in autistic spaces, and that the exhausting part is the pushback: “you’re just too sensitive.” Naming harm is not fragility.",
       opener:
-        "This lesson uses Tychelle’s own public writing, paraphrased. She is a Black Canadian autistic educator. The classroom translation is simple: when a student names racism, do not make their sensitivity the topic.",
+        "This lesson uses Tychelle’s own public writing, paraphrased. She is a Black Canadian autistic educator. When a student names racism, do not make their sensitivity the topic.",
       beats: [
         {
           heading: "🗣️ The pushback is the harm",

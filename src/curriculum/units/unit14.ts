@@ -311,12 +311,12 @@ export const unit14: UnitSeed = {
       concept:
         "CAST’s 2024 strategy guideline includes challenging exclusionary practices. Some rules about how work may be done keep people out without protecting the goal. Name the rule, ask what it is guarding, and drop it if it is not the goal.",
       opener:
-        "Consideration 6.5 in the 2024 guidelines is the spine of this lesson. The examples are composites. The design test is the same: if the rule is not the learning goal, it is a candidate for change.",
+        "Consideration 6.5 in the 2024 guidelines is the spine of this lesson. The design test is the same: if the rule is not the learning goal, it is a candidate for change.",
       beats: [
         {
           heading: "🚪 Attendance is not the essay",
           research:
-            "A rule that says work only counts if it was produced in the room, in one sitting, can exclude students whose bodies, care duties, or sensory load make that sitting impossible. If the goal is the essay, the essay can be made in more than one place. If the goal is a supervised practical, say that plainly.",
+            "A rule that says work only counts if it was produced in the room, in one sitting, can exclude students whose bodies, care duties, or sensory load make that sitting impossible. If the goal is the essay, the essay can be made in more than one place.",
           scene: "a high-school policy zeroes any essay not handwritten in class.",
           barrier: "a place rule standing in for the essay",
           barrierWrongs: ["an essay goal", "class time", "students who write best in the room"],
@@ -360,7 +360,7 @@ export const unit14: UnitSeed = {
         {
           heading: "Group grades can hide exclusion",
           research:
-            "A single group grade can force one student to carry the work or can push a student out of the decisions. CAST’s emphasis on strategy and on challenging exclusion applies to the group contract. Grade the thinking you can attribute, and teach the group how to divide the actual goal.",
+            "A single group grade can force one student to carry the work or can push a student out of the decisions. Grade the thinking you can attribute, and teach the group how to divide the actual goal.",
           scene: "a primary group poster gives everyone the same mark, including a child who was told to color only.",
           barrier: "a shared grade that hides who was allowed to think",
           barrierWrongs: ["group work", "a poster", "children who collaborate well"],

@@ -408,12 +408,12 @@ const lessons: UnitSeed["lessons"] = [
     concept:
       "Ecological fit means the environment carries more of the adjustment than the student’s mask does. CAST’s 2024 guidelines give the matching rule: pursue learner agency, and look for barriers in systems as well as in tasks. The goal stays.",
     opener:
-      "Ecological fit is this course’s name for a simple test: when a learner stalls, inspect the room before character. CAST published the UDL Guidelines 3.0 in 2024. The aim is learner agency, and barriers include bias and exclusion, not only one child’s body.",
+      "Ecological fit is this course’s name for a simple test: when a learner stalls, inspect the room before character. The aim is learner agency, and barriers include bias and exclusion, not only one child’s body.",
     beats: [
       beat({
         heading: "🚪 The room can be the mismatch",
         research:
-          "Fit is ecological when you change lighting, timing, language, tools, or rules because they are the mismatch. The student is not a problem to sand down until the room feels easy for everyone else. This is a design stance. It does not require you to pretend every demand is optional.",
+          "Fit is ecological when you change lighting, timing, language, tools, or rules because they are the mismatch. The student is not a problem to sand down until the room feels easy for everyone else.",
         scene: "a primary classroom runs a clap, a loud timer, and a shouted instruction in the same ten seconds, then calls the covered ears refusal.",
         barrier: "stacked sound, speed, and a sudden demand",
         barrierWrongs: ["a transition existing", "a student who knows the next task", "covered ears as communication"],
@@ -435,7 +435,7 @@ const lessons: UnitSeed["lessons"] = [
       beat({
         heading: "Agency is the UDL aim",
         research:
-          "CAST (2024) describes the aim of UDL as learner agency: purposeful and reflective, resourceful and authentic, strategic and action-oriented. Agency is not a free pass. It is the capacity to take up a real goal by a means that does not require self-erasure. A plan that only produces compliance has missed the aim.",
+          "CAST (2024) describes the aim of UDL as learner agency: purposeful and reflective, resourceful and authentic, strategic and action-oriented. Agency is not a free pass. It is the capacity to take up a real goal by a means that does not require self-erasure.",
         scene: "a middle-school project allows “choice” only among three topics the teacher already likes, with one poster format.",
         barrier: "fake choice that does not increase agency",
         barrierWrongs: ["projects existing", "a teacher having taste", "a poster"],

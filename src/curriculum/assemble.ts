@@ -39,18 +39,34 @@ function quizAsk(prompt: string): string {
   return `🧩 Finish this sentence: ${trimmed}`;
 }
 
-function frame(beat: BeatSeed, index: number): string {
-  const shared = `Composite: ${beat.scene} Barrier: ${beat.barrier}. Goal: ${beat.goal}. Means: ${beat.means}. Retire “${beat.deficit}.” Instead: ${beat.reframe} If you hear “${beat.line},” say “${beat.reply}” Check: ${beat.quizCorrect}`;
-  if (index % 4 === 1) {
-    return `${beat.research} Goal first: ${beat.goal}. Composite: ${beat.scene} Barrier: ${beat.barrier}. Means: ${beat.means}. “${beat.deficit}” is the deficit line. Instead: ${beat.reframe} Reply to “${beat.line}”: “${beat.reply}” Check: ${beat.quizCorrect}`;
-  }
-  if (index % 4 === 2) {
-    return `Check: ${beat.quizCorrect} ${beat.research} Composite: ${beat.scene} Barrier: ${beat.barrier}. Goal: ${beat.goal}. Means: ${beat.means}. Translate “${beat.deficit}” as: ${beat.reframe} “${beat.line}” gets this reply: “${beat.reply}”`;
-  }
-  if (index % 4 === 3) {
-    return `${beat.research} “${beat.line}” gets this reply: “${beat.reply}” Composite: ${beat.scene} Barrier: ${beat.barrier}. Goal: ${beat.goal}. Means: ${beat.means}. Not “${beat.deficit}.” Instead: ${beat.reframe} Check: ${beat.quizCorrect}`;
-  }
-  return `${beat.research} ${shared}`;
+function close(text: string): string {
+  const trimmed = tidy(text);
+  if (/[.!?]["”']?$/.test(trimmed)) return trimmed;
+  return `${trimmed}.`;
+}
+
+function spoken(text: string): string {
+  const trimmed = tidy(text);
+  if (/[.!?]["”']?$/.test(trimmed)) return `“${trimmed}”`;
+  return `“${trimmed}.”`;
+}
+
+function sceneSentence(scene: string): string {
+  const trimmed = tidy(scene);
+  return close(trimmed.charAt(0).toUpperCase() + trimmed.slice(1));
+}
+
+function frameBlocks(beat: BeatSeed): { heading?: string; body: string }[] {
+  return [
+    { heading: beat.heading, body: tidy(beat.research) },
+    {
+      body: `${sceneSentence(beat.scene)} The obstacle is ${tidy(beat.barrier)}. The goal is ${tidy(beat.goal)}. Do this: ${close(beat.means)}`,
+    },
+    {
+      body: `Replace ${spoken(beat.deficit)} with this: ${close(beat.reframe)} A learner says ${spoken(beat.line)} You can answer: ${spoken(beat.reply)}`,
+    },
+    { body: `The questions use this wording: ${close(beat.quizCorrect)}` },
+  ];
 }
 
 function draftFor(beat: BeatSeed, format: FormatId, slot: number, lessonTitle: string): Omit<QuestionDraft, "sourceLessonId" | "sourceUnitId"> {
@@ -137,13 +153,7 @@ export function assemble(seeds: UnitSeed[]): Course {
         lesson.emoji,
         lesson.concept,
         lesson.articleTitle,
-        [
-          { body: lesson.opener },
-          ...lesson.beats.map((beat, beatIndex) => ({
-            heading: beat.heading,
-            body: frame(beat, beatIndex),
-          })),
-        ],
+        [{ body: lesson.opener }, ...lesson.beats.flatMap((beat) => frameBlocks(beat))],
         lessonDrafts(lesson).map((draft) => ({ ...draft, sourceLessonId: id, sourceUnitId: seed.id })),
       );
     });
